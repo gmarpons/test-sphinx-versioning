@@ -11,8 +11,6 @@ deploy:
       branch: master
     skip-cleanup: true                  # Keep files generated during the build
     github-token: $GITHUB_TOKEN         # Set in travis-ci.org dashboard, marked secure
-    repo: gmarpons/foss-guide
-    target-branch: master
     local-dir: build/html
     keep-history: true                  # Do not overwrite 'target-branch' in every push
   - provider: pages
@@ -20,8 +18,6 @@ deploy:
       branch: develop
     skip-cleanup: true                  # Keep files generated during the build
     github-token: $GITHUB_TOKEN         # Set in travis-ci.org dashboard, marked secure
-    repo: gmarpons/foss-guide-develop
-    target-branch: master
     local-dir: build/html
     keep-history: true                  # Do not overwrite 'target-branch' in every push
 branches:

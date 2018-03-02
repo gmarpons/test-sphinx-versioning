@@ -1,0 +1,4 @@
+Sphinx==1.6.7
+sphinx-rtd-theme
+sphinxcontrib-needs
+sphinxcontrib-versioning

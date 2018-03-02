@@ -1,0 +1,30 @@
+language: python
+python:
+  - 3.5
+script:
+  - mkdir -p build/html && touch build/html/.nojekyll
+after_success:                          # Document is built here
+  - sphinx-versioning build --show-banner -w master -W 0.1 -W 0.2 source build/html/ca
+deploy:
+  - provider: pages
+    on:
+      branch: master
+    skip-cleanup: true                  # Keep files generated during the build
+    github-token: $GITHUB_TOKEN         # Set in travis-ci.org dashboard, marked secure
+    repo: gmarpons/foss-guide
+    target-branch: master
+    local-dir: build/html
+    keep-history: true                  # Do not overwrite 'target-branch' in every push
+  - provider: pages
+    on:
+      branch: develop
+    skip-cleanup: true                  # Keep files generated during the build
+    github-token: $GITHUB_TOKEN         # Set in travis-ci.org dashboard, marked secure
+    repo: gmarpons/foss-guide-develop
+    target-branch: master
+    local-dir: build/html
+    keep-history: true                  # Do not overwrite 'target-branch' in every push
+branches:
+  only:
+    - master
+    - develop
